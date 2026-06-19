@@ -38,6 +38,12 @@ npm start                   # starts on http://localhost:3000
 
 ---
 
+## ER Diagram
+
+![ER Diagram](er-diagram.png)
+
+---
+
 ## Environment Variables
 
 ### server/.env
@@ -67,13 +73,6 @@ Sequelize's `sequelize.sync()` in `server/index.js` creates tables automatically
 ```bash
 mysql -u root -p project_management < server/schema.sql
 ```
-
----
-
-## ER Diagram
-
-![ER Diagram](er-diagram.png)
-
 
 ---
 
