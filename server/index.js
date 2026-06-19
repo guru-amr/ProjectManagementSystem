@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 const sequelize = require('./config/database');
 require('./models'); // register associations
 
@@ -27,6 +29,21 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', auth, projectRoutes);
 app.use('/api/tasks', auth, taskRoutes);
 app.use('/api/dashboard', auth, dashboardRoutes);
+
+const swaggerSpec = swaggerJsdoc({
+  definition: {
+    openapi: '3.0.0',
+    info: { title: 'Project Management API', version: '1.0.0' },
+    components: {
+      securitySchemes: {
+        bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      },
+    },
+    security: [{ bearerAuth: [] }],
+  },
+  apis: ['./routes/*.js'],
+});
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(errorHandler);
 

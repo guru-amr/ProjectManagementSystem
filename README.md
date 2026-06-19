@@ -70,6 +70,13 @@ mysql -u root -p project_management < server/schema.sql
 
 ---
 
+## ER Diagram
+
+![ER Diagram](er-diagram.png)
+
+
+---
+
 ## Design Decisions
 
 | Decision | Choice | Reason |
