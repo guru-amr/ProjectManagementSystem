@@ -1,0 +1,8 @@
+{
+  "apps": [
+    {
+      "type": "node",
+      "project-dir": "server"
+    }
+  ]
+}
